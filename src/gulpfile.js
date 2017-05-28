@@ -2,13 +2,12 @@ const gulp = require('gulp')
 const sass = require('gulp-sass')
 const pug = require('gulp-pug')
 const babel = require('gulp-babel')
+const eslint = require('gulp-eslint');
 
 
-//transpile JSX to JS
-gulp.task('babel', () => {
-    return gulp.src('./publicDev/**/*.js').
-        pipe(babel({
-            plugins: ['transform-react-jsx']
-        })).
-        pipe(gulp.dest('./public/'))
+gulp.task('html', () => {
+    return gulp.src('./publicDev/index.html').
+    pipe(gulp.dest('./public/'))
 })
+
+gulp.task('default', () => gulp.start('html'));
