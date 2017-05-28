@@ -24,10 +24,14 @@
   "homepage": "https://github.com/michaelKurowski/hedonist#readme",
   "dependencies": {
     "express": "^4.15.3",
+<<<<<<< HEAD
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0"
+=======
+    "passport": "^0.3.2"
+>>>>>>> ad3763ee2ecd73b4c85fbde355fc2387c15776b2
   },
   "devDependencies": {
     "babel-plugin-transform-react-jsx": "^6.24.1",
