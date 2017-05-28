@@ -1,0 +1,37 @@
+{
+  "name": "hedonist",
+  "version": "1.0.0",
+  "description": "Beer finding NodeJS application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelKurowski/hedonist.git"
+  },
+  "keywords": [
+    "beer",
+    "js",
+    "nodejs",
+    "node"
+  ],
+  "author": "Michael Kurowski, Jordan Moss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelKurowski/hedonist/issues"
+  },
+  "homepage": "https://github.com/michaelKurowski/hedonist#readme",
+  "devDependencies": {
+    "chai": "^4.0.0",
+    "chai-as-promised": "^6.0.0",
+    "eslint": "^3.19.0",
+    "express": "^4.15.3",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-pug": "^3.3.0",
+    "gulp-sass": "^3.1.0",
+    "mocha": "^3.4.2",
+    "supertest": "^3.0.0"
+  }
+}
