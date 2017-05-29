@@ -26,7 +26,7 @@ const tests = [
 			expectedCode: 200,
 			expectedParsingOutputType: 'object',
 			expectedProperies: [
-				'name', 'id', 'description'
+				'data'
 			]
 		}
 	

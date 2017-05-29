@@ -46,12 +46,13 @@ module.exports = function (requestData, expectedResponse, describe, it) {
 			it(`parses to ${expectedParsingOutputType} type` , done => {
 				expect(responseObject).to.be.an(expectedParsingOutputType)
 			})
-			for (property of expectedProperies) {
-				it(`parses to object with property '${property}'`, done => {
-					expect(responseObject).to.have.property(property)
-				})
+			if (typeof expectedParsingOutputType === 'object') {
+				for (property of expectedProperies) {
+					it(`parses to object with property '${property}'`, done => {
+						expect(responseObject).to.have.property(property)
+					})
+				}
 			}
-
 		})
 	})
 }
