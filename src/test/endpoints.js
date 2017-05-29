@@ -3,7 +3,7 @@ const basicEndpointTest = require('./utils/basicEndpointTest.js')
 const tests = [
 	{
 		requestData: {
-			endpoint: 'api/beer/GUL',
+			endpoint: 'api/beer/oeGSxs',
 			httpMethod: 'get',
 			body: ''
 		},
