@@ -14,107 +14,56 @@
         <div id="app">
             <p>{{message}}</p>
         </div>
-        <div id="app-2">
-            <span v-bind:title="message">
-                Hover your mouse over me for a few seconds
-                to see my dynamically bound title!
-            </span>
-        </div>
-        <div id="app-3">
-            <p v-if="seen">Now you see me</p>
-        </div>
-        <div id="app-4">
-            <ol>
-                <li v-for="todo in todos">
-                    {{todo.text}}
-                </li>
-            </ol>
-        </div>
-        <div id="app-5">
-            <p>{{message}}</p>
-            <button v-on:click="reverseMessage"> Reverse Message </button>
-        </div>
-        <div id="app-6">
-            <p>{{message}}</p>
-            <input v-model="message">
-        </div>
-        <div id="app-7">
-            <ol>
-                <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
-                </todo-item>
-        </div>
+        <div class="container-fluid">
+            <h1>Hello World!</h1>
+            <div id="beers" class="row">
+                <beer-component ref="list">
+
+                </beer-component>
+            </div>
     </body>
 
 </html>
+<style>
+    #beer1 {
+        background-color: tan;
+    }
+    
+    h1,
+    h4 {
+        text-align: center;
+    }
+    
+    #beer1 img {
+        width: 100%;
+    }
+</style>
 <script>
-    const app1 = new Vue({
-        el: '#app',
-        data: {
-            message: $.get('http://localhost:80/api/beer/oeGSxs', data => data)
-        }
+    $(document).ready(() => {
+        $.get('http://localhost:80/api/beer/oeGSxs', function(data) {
+            JSONdata = (data.data);
+        }).done(function() {
+            app.$refs.list.$data.name = JSONdata.name
+            app.$refs.list.$data.url = JSONdata.labels.medium
+            app.$refs.list.$data.brewery = JSONdata.style.category.name
+        })
     })
+    let JSONdata;
 
-    const app2 = new Vue({
-        el: '#app-2',
-        data: {
-            message: 'You loaded this page on ' + new Date()
-        }
-    })
-    const app3 = new Vue({
-        el: '#app-3',
-        data: {
-            seen: true
-        }
-    })
-    const app4 = new Vue({
-        el: '#app-4',
-        data: {
-            todos: [{
-                text: 'Learn JavaScript'
-            }, {
-                text: 'Learn Vue'
-            }, {
-                text: 'Build something awesome'
-            }]
-        }
-    })
-    const app5 = new Vue({
-        el: '#app-5',
-        data: {
-            message: 'Hello Vue.js'
-        },
-        methods: {
-            reverseMessage: function() {
-                this.message = this.message.split('').reverse().join('')
+    let beer_component;
+
+    Vue.component('beer-component', {
+        template: '<div id="beer1" class="col-md-4"><h1>{{name}}</h1><img :src="url"><h4>{{brewery}}</h4></div>',
+        data: function() {
+            return {
+                name: "Loading...",
+                url: "",
+                brewery: "Guinness"
             }
         }
     })
 
-    const app6 = new Vue({
-        el: '#app-6',
-        data: {
-            message: 'Hello Vue!'
-        }
-    })
-
-    Vue.component('todo-item', {
-        props: ['todo'],
-        template: '<li>{{ todo.text }}</li>'
-    })
-
-    const app7 = new Vue({
-        el: '#app-7',
-        data: {
-            groceryList: [{
-                id: 0,
-                text: 'Vegetables'
-            }, {
-                id: 1,
-                text: 'Cheese'
-            }, {
-                id: 2,
-                text: 'Whatever else humans are supposed to eat'
-            }]
-        }
+    let app = new Vue({
+        el: '#beers'
     })
 </script>
