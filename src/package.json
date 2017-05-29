@@ -4,7 +4,7 @@
   "description": "Beer finding NodeJS application",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
