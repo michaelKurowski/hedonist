@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 mongoose.Promise = Promise
 
+const beerRouter = require('./routers/beer.js')
+
 const config = require('./config/config.json')
 const port = config.backend.port
 const dbAddress = config.backend.dbAddress
@@ -15,7 +17,7 @@ const log = console.log
 
 app.use(bodyParser.json())
 app.use('/client', express.static(`${__dirname}/public`))
-
+app.use('/api/beer', beerRouter)
 mongoose.connect(`mongodb://${dbUsername}:${dbPassword}@${dbAddress}`).then(
 	() => {
 		throwLog('Init', 'Connected to database', true)
