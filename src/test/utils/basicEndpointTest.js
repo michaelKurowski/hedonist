@@ -5,22 +5,33 @@
 const expect = require('chai').expect
 const request = require('supertest')
 const config = require('../../config/config.json')
-
 const address = config.backend.hostname + ':' + config.backend.port + '/'
-
+//using agent instead of request lets us to share received cookies between requests
+const agent = request.agent(address)
 module.exports = function (requestData, expectedResponse, describe, it) {
 	const id =''
 	const {endpoint, httpMethod, body} = requestData
 	const {expectedCode, expectedParsingOutputType, expectedProperies} = expectedResponse
 	describe(address + endpoint, () => {
 		let responseStatus, responseContentType, responseBody, responseObject
-		before(done => {
-			//Authentication
-			done()
+		let cookies = ''
+		describe('authentication', () => {
+			it ('has been successful', done => {
+				agent
+					.post('authenticate/signIn')
+					.set('Accept','application/json')
+					.send({username: 'testUser', password: config.backend.testUserPassword})
+					.expect('Content-Type', /json/)
+					.expect(200)
+					.end( (err, res) => {
+						expect(res.body.status).to.be.equal('success')
+						done()
+					})
+			})
 		})
 		describe('sent request', () => {
 			it('should be able to be sent', done => {
-				request(address)
+				agent
 					[httpMethod](endpoint + id)
 					.send(body)
 					.end( (err, res) => {
