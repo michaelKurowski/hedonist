@@ -3,7 +3,7 @@ const basicEndpointTest = require('./utils/basicEndpointTest.js')
 const tests = [
 	{
 		requestData: {
-			endpoint: 'api/beer/oeGSxs',
+			endpoint: 'api/beer/WHQisc',
 			httpMethod: 'get',
 			body: ''
 		},
@@ -18,7 +18,7 @@ const tests = [
 	},
 	{
 		requestData: {
-			endpoint: 'api/beer/GUL/breweries',
+			endpoint: 'api/beer/WHQisc/breweries',
 			httpMethod: 'get',
 			body: ''
 		},
@@ -33,7 +33,7 @@ const tests = [
 	},
 	{
 		requestData: {
-			endpoint: 'api/beer/GUL/ingredients',
+			endpoint: 'api/beer/WHQisc/ingredients',
 			httpMethod: 'get',
 			body: ''
 		},
@@ -48,7 +48,7 @@ const tests = [
 	},
 	{
 		requestData: {
-			endpoint: 'api/beer/GUL/ingredients/details',
+			endpoint: 'api/beer/WHQisc/ingredients/details',
 			httpMethod: 'get',
 			body: ''
 		},
@@ -63,7 +63,7 @@ const tests = [
 	},
 	{
 		requestData: {
-			endpoint: 'api/beer/GUL/socialAccounts',
+			endpoint: 'api/beer/WHQisc/socialAccounts',
 			httpMethod: 'get',
 			body: ''
 		},
@@ -78,7 +78,7 @@ const tests = [
 	},
 	{
 		requestData: {
-			endpoint: 'api/beer/GUL/variations',
+			endpoint: 'api/beer/WHQisc/variations',
 			httpMethod: 'get',
 			body: ''
 		},
@@ -93,7 +93,7 @@ const tests = [
 	},
 	{
 		requestData: {
-			endpoint: 'api/beer/GUL/breweries',
+			endpoint: 'api/beer/WHQisc/breweries',
 			httpMethod: 'get',
 			body: ''
 		},

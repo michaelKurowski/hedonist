@@ -49,6 +49,10 @@ module.exports = function (requestData, expectedResponse, describe, it) {
 				expect(responseObject).to.be.an(expectedParsingOutputType)
 				done()
 			})
+			it(`returns status=success from breweryDB` , done => {
+				expect(responseObject.status).to.be.equal('success')
+				done()
+			})
 			if (typeof expectedParsingOutputType === 'object') {
 				for (property of expectedProperies) {
 					it(`parses to object with property '${property}'`, done => {
