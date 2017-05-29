@@ -26,7 +26,10 @@ app.use('/client', express.static(`${__dirname}/public`))
 
 const sessionsMiddleware = [
 	cookieParser(),
-	cookieSession({secret: config.backend.sessionsSecretKey}),
+	cookieSession({
+		secret: config.backend.sessionsSecretKey,
+		maxAge: 1000 * 60 * 15 // 15 minutes
+	}),
 	passportBundle.initialize(), 
 	passportBundle.session(),
 	(req, res, next) => {
