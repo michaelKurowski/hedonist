@@ -9,14 +9,20 @@ router.get('/', (req, res) => {
 	if (req.query.random) {
 		apiRequest(`beer/random`).then(
 			data => res.json(data),
-			err => throwLog('api/beer/' + id, err, true)
+			err => {
+				res.json({status: 'failure'})
+				throwLog(req.originalUrl, err, true)
+			}
 		)
 		return null
 	}
 	delete req.query.random
 	apiRequest(`beers`, req.query).then(
 		data => {res.json(data)},
-		err => throwLog('api/beers' + id, err, true)
+		err => {
+			res.json({status: 'failure'})
+			throwLog(req.originalUrl, err, true)
+		}
 	)
 })
 
@@ -24,7 +30,10 @@ router.get('/:id', (req, res) => {
 	const id = req.params.id
 	apiRequest(`beer/${id}`).then(
 		data => res.json(data),
-		err => throwLog('api/beer/' + id, err, true)
+		err => {
+			res.json({status: 'failure'})
+			throwLog(req.originalUrl, err, true)
+		}
 	)
 })
 
@@ -32,7 +41,10 @@ router.get('/:id/variations', (req, res) => {
 	const id = req.params.id
 	apiRequest(`beer/${id}/variations`).then(
 		data => {res.json(data)},
-		err => throwLog(`api/beers/${id}/variations`, err, true)
+		err => {
+			res.json({status: 'failure'})
+			throwLog(req.originalUrl, err, true)
+		}
 	)
 })
 
@@ -40,7 +52,10 @@ router.get('/:id/socialAccounts', (req, res) => {
 	const id = req.params.id
 	apiRequest(`beer/${id}/socialaccounts`).then(
 		data => {res.json(data)},
-		err => throwLog(`api/beers/${id}/socialaccounts`, err, true)
+		err => {
+			res.json({status: 'failure'})
+			throwLog(req.originalUrl, err, true)
+		}
 	)
 })
 
@@ -48,7 +63,10 @@ router.get('/:id/ingredients', (req, res) => {
 	const id = req.params.id
 	apiRequest(`beer/${id}/ingredients`).then(
 		data => {res.json(data)},
-		err => throwLog(`api/beer/${id}/ingredients`, err, true)
+		err => {
+			res.json({status: 'failure'})
+			throwLog(req.originalUrl, err, true)
+		}
 	)
 })
 
@@ -67,15 +85,16 @@ router.get('/:id/ingredients/details', (req, res) => {
 		responses => {
 			responses[0].data = responses[0].data || []
 			responses[1].data = responses[1].data || []
-			console.log(responses[0])
-			console.log(responses[1])
 			res.json({
 				message: 'Reqiuest Successful',
 				status: 'success',
 				data: responses[0].data.concat(responses[1].data)
 			})
 		},
-			err => throwLog(`api/beer/${id}/ingredients`, err, true)
+		err => {
+			res.json({status: 'failure'})
+			throwLog(req.originalUrl, err, true)
+		}
 	)
 })
 
@@ -83,7 +102,10 @@ router.get('/:id/breweries', (req, res) => {
 	const id = req.params.id
 	apiRequest(`beer/${id}/breweries`).then(
 		data => {res.json(data)},
-		err => throwLog(`api/beer/${id}/breweries`, err, true)
+		err => {
+			res.json({status: 'failure'})
+			throwLog(req.originalUrl, err, true)
+		}
 	)
 })
 

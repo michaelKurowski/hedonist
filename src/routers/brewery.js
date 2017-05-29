@@ -8,7 +8,10 @@ router.get('/:id', (req, res) => {
 	const id = req.params.id
 	apiRequest(`brewery/${id}`).then(
 		data => res.json(data),
-		err => throwLog(`api/brewery/${id}`, err, true)
+		err => {
+			res.json({status: 'failure'})
+			throwLog(req.originalUrl, err, true)
+		}
 	)
 })
 router.get('/:id/beers', (req, res) => {
@@ -16,7 +19,10 @@ router.get('/:id/beers', (req, res) => {
 	console.log(id)
 	apiRequest(`brewery/${id}/beers`).then(
 		data => res.json(data),
-		err => throwLog(`api/brewery/${id}/beers`, err, true)
+		err => {
+			res.json({status: 'failure'})
+			throwLog(req.originalUrl, err, true)
+		}
 	)
 })
 
