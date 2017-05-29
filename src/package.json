@@ -26,6 +26,8 @@
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "chalk": "^1.1.3",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.2",
     "express": "^4.15.3",
     "get-json": "0.0.3",
     "ionic-error-logger": "^1.1.0",
