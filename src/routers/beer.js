@@ -28,24 +28,63 @@ router.get('/:id', (req, res) => {
 	)
 })
 
-router.get('/:id/variants', (req, res) => {
-
+router.get('/:id/variations', (req, res) => {
+	const id = req.params.id
+	apiRequest(`beer/${id}/variations`).then(
+		data => {res.json(data)},
+		err => throwLog(`api/beers/${id}/variations`, err, true)
+	)
 })
 
 router.get('/:id/socialAccounts', (req, res) => {
-
+	const id = req.params.id
+	apiRequest(`beer/${id}/socialaccounts`).then(
+		data => {res.json(data)},
+		err => throwLog(`api/beers/${id}/socialaccounts`, err, true)
+	)
 })
 
 router.get('/:id/ingredients', (req, res) => {
-
+	const id = req.params.id
+	apiRequest(`beer/${id}/ingredients`).then(
+		data => {res.json(data)},
+		err => throwLog(`api/beer/${id}/ingredients`, err, true)
+	)
 })
 
 router.get('/:id/ingredients/details', (req, res) => {
-
+	const id = req.params.id
+	Promise.all([
+		apiRequest(`beer/${id}/hops`).then(
+			data => data,
+			err => throwLog(`api/beer/${id}/ingredients`, err, true)
+		),
+		apiRequest(`beer/${id}/ingredients`).then(
+			data => data,
+			err => throwLog(`api/beer/${id}/ingredients`, err, true)
+		)
+	]).then(
+		responses => {
+			responses[0].data = responses[0].data || []
+			responses[1].data = responses[1].data || []
+			console.log(responses[0])
+			console.log(responses[1])
+			res.json({
+				message: 'Reqiuest Successful',
+				status: 'success',
+				data: responses[0].data.concat(responses[1].data)
+			})
+		},
+			err => throwLog(`api/beer/${id}/ingredients`, err, true)
+	)
 })
 
 router.get('/:id/breweries', (req, res) => {
-
+	const id = req.params.id
+	apiRequest(`beer/${id}/breweries`).then(
+		data => {res.json(data)},
+		err => throwLog(`api/beer/${id}/breweries`, err, true)
+	)
 })
 
 module.exports = router
