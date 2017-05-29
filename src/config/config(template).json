@@ -5,7 +5,9 @@
 		"breweryDbApiKey": "",
 		"dbAddress": "",
 		"dbUsername": "",
-		"dbPassword": ""
+		"dbPassword": "",
+		"sessionsSecretKey": "",
+		"testUserPassword": ""
 	},
 	"frontend": {
 
