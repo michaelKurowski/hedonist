@@ -7,7 +7,6 @@ module.exports = function (endpoint, parameters = null) {
 			parametersString += `&${parameter}=${parameters[parameter]}`
 		}
 	}
-	console.log(`http://api.brewerydb.com/v2/${endpoint}?key=${breweryDbApiKey}${parametersString}`)
 	return new Promise( (resolve, reject) => 
 		getJSON(
 			`http://api.brewerydb.com/v2/${endpoint}?key=${breweryDbApiKey}${parametersString}`, 
