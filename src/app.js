@@ -4,6 +4,7 @@ const throwLog = require('ionic-error-logger')
 const chalk = require('chalk')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+mongoose.Promise = Promise
 
 const config = require('./config/config.json')
 const port = config.backend.port
