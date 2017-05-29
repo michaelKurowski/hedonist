@@ -5,6 +5,8 @@ const chalk = require('chalk')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 mongoose.Promise = Promise
+const passport = require('passport')
+
 
 const beerRouter = require('./routers/beer.js')
 const breweryRouter = require('./routers/brewery.js')
