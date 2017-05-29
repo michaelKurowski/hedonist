@@ -16,7 +16,6 @@ router.get('/:id', (req, res) => {
 })
 router.get('/:id/beers', (req, res) => {
 	const id = req.params.id
-	console.log(id)
 	apiRequest(`brewery/${id}/beers`).then(
 		data => res.json(data),
 		err => {

@@ -10,9 +10,9 @@ const userSchema = new Schema({
 	createdDate: {type: String, required: true},
 	authenticated: {type: String, required: true}
 })
-userSchema.methods.comparePasswords = function (candidatePassword) {
+userSchema.statics.comparePasswords = function (user, candidatePassword) {
 	return new Promise( (resolve, reject) => 
-		bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+		bcrypt.compare(candidatePassword, user.password, function(err, isMatch) {
 			if (err) return reject(err)
 			resolve(isMatch)
 		})
