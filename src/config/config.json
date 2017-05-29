@@ -1,7 +1,11 @@
 {
 	"backend": {
 		"port": 80,
-		"hostname": "localhost"
+		"hostname": "localhost",
+		"breweryDbApiKey": "",
+		"dbAddress": "",
+		"dbUsername": "",
+		"dbPassword": ""
 	},
 	"frontend": {
 

@@ -1,14 +1,17 @@
 
 const expect = require('chai').expect
 const request = require('supertest')
-const config = require('../config/config.json')
+const config = require('../../config/config.json')
 
 
 const hostname = config.backend.hostname
 const port = config.backend.port
 const api = '/api/beer/'
 
-
+/*
+	TODO checking if user can access endpoint without authentication
+	Checking case if wrong id has been sent, or if no any has been sent
+*/
 
 describe('/api/beer/:id', () => {
 	const id = 'PLACEHOLDER'
