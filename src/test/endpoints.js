@@ -108,7 +108,7 @@ const tests = [
 	},
 	{
 		requestData: {
-			endpoint: 'api/brewery/ABC',
+			endpoint: 'api/brewery/AqEUBQ',
 			httpMethod: 'get',
 			body: ''
 		},
@@ -123,7 +123,7 @@ const tests = [
 	},
 	{
 		requestData: {
-			endpoint: 'api/brewery/ABC/beers',
+			endpoint: 'api/brewery/AqEUBQ/beers',
 			httpMethod: 'get',
 			body: ''
 		},
