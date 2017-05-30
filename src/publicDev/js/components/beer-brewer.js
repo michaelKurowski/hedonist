@@ -1,0 +1,1 @@
+const beer_brewer = { template: "<h4> {{brewer}} </h4>" }
