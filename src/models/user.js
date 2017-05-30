@@ -4,9 +4,9 @@ const bcrypt = require('bcrypt')
 const SALT_WORK_FACTOR = 10
 
 const userSchema = new Schema({
-	username: {type: String, required: true, index: { unique: true }},
+	username: {type: String, required: true, validate: /^[a-zA-Z0-9_]*$/,index: { unique: true }},
 	password: {type: String, required: true},
-	email: {type: String, required: true},
+	email: {type: String, required: true, validate: /^[a-zA-Z0-9_@.]*$/},
 	createdDate: {type: String, required: true},
 	authenticated: {type: String, required: true}
 })
@@ -21,6 +21,7 @@ userSchema.statics.comparePasswords = function (user, candidatePassword) {
 userSchema.pre('save', function (next) {
 	const user = this
 	if (!user.isModified('password')) return next()
+	//hashing password
 	bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
 		if (err) return next(err);
 		bcrypt.hash(user.password, salt, function(err, hash) {
@@ -29,6 +30,7 @@ userSchema.pre('save', function (next) {
 			next()
 		})
 	})
+
 })
 
 const User = mongoose.model('User', userSchema)
