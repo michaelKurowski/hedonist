@@ -1,0 +1,1 @@
+const beer_name = { template: "<h2> {{name}} </h2>" }

@@ -1,0 +1,1 @@
+const beer_image = { template: '<img :src="url">' };

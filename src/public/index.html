@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/48938155eb24b4ccdde09426066869504c6dab3c/dist/css/bootstrap.min.css">
     <script src="https://unpkg.com/vue"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/queries.js"></script>
 </head>
 
 <body>
@@ -39,31 +41,51 @@
     }
 </style>
 <script>
-    $(document).ready(() => {
-        $.get('http://localhost:80/api/beer/oeGSxs', function(data) {
-            JSONdata = (data.data);
-        }).done(function() {
-            app.$refs.list.$data.name = JSONdata.name
-            app.$refs.list.$data.url = JSONdata.labels.medium
-            app.$refs.list.$data.brewery = JSONdata.style.category.name
-        })
-    })
+    const _DIVIDER = 6;
     let JSONdata;
-
     let beer_component;
 
-    Vue.component('beer-component', {
+
+    $(document).ready(() => {
+
+        loginToServer()
+
+    })
+
+
+    let myApp = Vue.component('beer-component', {
         template: '<div id="beer1" class="col-md-4"><h1>{{name}}</h1><img :src="url"><h4>{{brewery}}</h4></div>',
-        data: function() {
-            return {
-                name: "Loading...",
-                url: "",
-                brewery: "Guinness"
-            }
+        data: {
+            name: 'Loading',
+            url: '',
+            brewery: 'Guiness'
         }
     })
 
     let app = new Vue({
         el: '#beers'
     })
+
+    function generateBeers(JSONArray) {
+        for (let i = 0; i < JSONArray.length; i += 6) {
+            $('.container-fluid').append($('div').addClass('row').attr('id', `beer-row-${i}`))
+
+            for (let j = 0; j < 6; j++) {
+                createComponent(`#beer-row-${i}`, `beer-component-${i+j}`, beerTemplate, JSONArray[i + j])
+            }
+        }
+    }
+
+    function createComponent(element, componentName, templateData, dataObj) {
+
+        let myComponent = Vue.component(componentName, {
+            template: templateData,
+            data: dataObj
+        })
+        let render = new Vue({
+            el: element
+        })
+    }
+
+    queryBeers('oeGSxs')
 </script>
