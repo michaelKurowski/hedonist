@@ -25,7 +25,7 @@ gulp.task('sass', function () {
 
 gulp.task('watchCSS', () => gulp.watch('./publicDev/**/*.scss', ['sass']))
 
-gulp.task('watchJS', () => gulp.watch('./publicDev/index.html', ['babel']))
+gulp.task('watchJS', () => gulp.watch('./publicDev/js/.*js', ['babel']))
 
 gulp.task('watchHTML', () => gulp.watch('./publicDev/index.html', ['html']))
 
