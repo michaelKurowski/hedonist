@@ -7,8 +7,9 @@ var getDummyToJSON = function getDummyToJSON() {
 };
 var getRandomBeerToJSON = function getRandomBeerToJSON() {};
 function getBeerVariationsJSON(id) {
-    var URL = 'http://localhost:80/api/beer/' + id + '/variations';
-    sendData(URL, 'GET', null, generateBeers);
+    $.get('http://localhost:80/api/beer/' + id + '/variations').done(function (data) {
+        return generateBeers(data);
+    });
 }
 var getBeerOfDayToJSON = function getBeerOfDayToJSON() {};
 

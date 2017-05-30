@@ -3,65 +3,31 @@
 
 <head>
     <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/48938155eb24b4ccdde09426066869504c6dab3c/dist/css/bootstrap.min.css">
-    <script src="https://unpkg.com/vue"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/queries.js"></script>
 </head>
     <body>
-        <div class="container-fluid">
-            <div class="searchbar">
-                <input type="search" class="searchbar--input" placeholder="Beers Beers Beers I fucking hate Vue">
-                    <div class="searchbar--buttons">
-                        <input type="submit" class="searchbar--submit" value="Search">
-                            <div class="select-wrapper">
-                                <select class="searchbar--select">
-                                    <option value="All" disabled selected>All Categories</option>
-                                    <option value="Women-C">Women's Clothes</option>
-                                    <option value="Men-C">Men's Clothes</option>
-                                    <option value="Electronics">Electronics</option>
-                                    <option value="Music-MP3">Music and MP3</option>
-                                </select>
+        <form action="/api/beer/" method="GET"> 
+                <div class="row">
+                    <div class="col-xs-6 col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            <div id="beers" class="row">
-
-            </div>
+            </form>
+        <div class="container-fluid">
+            <div id="beers" class="row"></div>
+        </div>
     </body>
 </html>
-<style>
-    body {
-        display: block;
-    }
-
-    .beer {
-
-        color: black ;
-        background-color: tan;
-        border-top: 1px solid #c0ffff ;
-        border-right: 1px solid #00f ;
-        border-bottom: 1px solid #00f ;
-        border-left: 1px solid #c0ffff ;
-        padding: 2px, 10px;
-        margin: 8px;
-
-    }
-    
-    h3,
-    h5 {
-        text-align: center;
-    }
-    
-    .beer img {
-        padding: 10px;
-        width: 100%;
-        display: inline-block;
-        vertical-align: middle;
-    }
-</style>
 <script>
     const _DIVIDER = 6;
 
@@ -91,3 +57,29 @@
     }
 
 </script>
+<style>
+
+    .beer {
+
+        color: black ;
+        background-color: tan;
+        border-top: 1px solid #c0ffff ;
+        border-right: 1px solid #00f ;
+        border-bottom: 1px solid #00f ;
+        border-left: 1px solid #c0ffff ;
+        padding: 2px, 10px;
+        margin: 8px;
+
+    }
+    
+    h3,
+    h5 {
+        text-align: center;
+    } 
+    .beer img {
+        padding: 10px;
+        width: 100%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+</style>
