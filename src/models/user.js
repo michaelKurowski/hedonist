@@ -4,10 +4,10 @@ const bcrypt = require('bcrypt')
 const SALT_WORK_FACTOR = 10
 
 const userSchema = new Schema({
-	username: {type: String, required: true, validate: /^[a-zA-Z0-9_]*$/,index: { unique: true }},
-	password: {type: String, required: true},
-	email: {type: String, required: true, validate: /^[a-zA-Z0-9_@.]*$/},
-	createdDate: {type: String, required: true},
+	username: {type: String, required: true, validate: /^[a-zA-Z0-9_]*$/, index: { unique: true }},
+	password: {type: String, required: true}, //not being sanitized, due to being hashed
+	email: {type: String, required: true, validate: /^[a-zA-Z0-9_@.]*$/, index: { unique: true }},
+	creationDate: {type: String, required: true},
 	authenticated: {type: String, required: true}
 })
 userSchema.statics.comparePasswords = function (user, candidatePassword) {
@@ -18,6 +18,15 @@ userSchema.statics.comparePasswords = function (user, candidatePassword) {
 		})
 	)
 }
+userSchema.pre('validate', function (next) {
+	const user = this
+	if (user.isNew) {
+		user.creationDate = new Date()
+		user.authenticated = false
+	}
+	next()
+})
+
 userSchema.pre('save', function (next) {
 	const user = this
 	if (!user.isModified('password')) return next()
