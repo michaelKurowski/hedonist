@@ -6,8 +6,8 @@ const getRandomBeerToJSON = () => {
 
 }
 function getBeerVariationsJSON(id){
-    const URL = `http://localhost:80/api/beer/${id}/variations`
-    sendData(URL, 'GET', null, generateBeers)
+    $.get(`http://localhost:80/api/beer/${id}/variations`).
+    done(data => generateBeers(data))
 }
 const getBeerOfDayToJSON = () => {
  
