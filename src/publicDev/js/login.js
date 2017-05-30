@@ -8,9 +8,7 @@ $.ajax({
     type: 'post',
     contentType: 'application/json',
     data: JSON.stringify({
-    username: 'testUser',
-    password: 'bfb0dhedonistAdmin37b45dc1',
-    email: 'bla@gma.pl'
+   
        }),
     processData: false,
     success: function(data){

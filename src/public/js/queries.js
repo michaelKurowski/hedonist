@@ -8,24 +8,21 @@ var getDummyToJSON = function getDummyToJSON() {
 var getRandomBeerToJSON = function getRandomBeerToJSON() {};
 function getBeerVariationsJSON(id) {
     var URL = 'http://localhost:80/api/beer/' + id + '/variations';
+    sendData(URL, 'GET', null, generateBeers);
+}
+var getBeerOfDayToJSON = function getBeerOfDayToJSON() {};
+
+function sendData(url, method, data, done) {
     $.ajax({
-        url: URL,
+        url: url,
         dataType: 'json',
-        type: 'get',
+        type: method,
         contentType: 'application/json',
-        data: JSON.stringify({
-            username: 'testUser',
-            password: 'bfb0dhedonistAdmin37b45dc1',
-            email: 'bla@gma.pl'
-        }),
+        data: JSON.stringify(data),
         processData: false,
-        success: function success(data) {
-            console.log("success", data);
-            generateBeers(data);
-        },
+        success: done(data),
         error: function error(res) {
-            console.log(res);
+            return console.log(res);
         }
     });
 }
-var getBeerOfDayToJSON = function getBeerOfDayToJSON() {};
