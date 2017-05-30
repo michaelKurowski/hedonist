@@ -13,9 +13,7 @@ router.post('/signUp', (req, res) => {
 	User.create( {
 		username, 
 		password, 
-		email,
-		authenticated: false,
-		createdDate: new Date()
+		email
 	}).then(
 		val => res.json({status: 'success'}),
 		err => res.json({status: 'failure'})
