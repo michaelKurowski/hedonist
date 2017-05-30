@@ -6,7 +6,7 @@ const babel = require('gulp-babel')
 gulp.task('babel', () => {
     return gulp.src('./publicDev/js/**/*.js')
         .pipe(babel({presets: ['es2015']}))
-        .pipe(gulp.dest('./public/'))
+        .pipe(gulp.dest('./public/js/'))
         .on('error', function (err) {console.log(err);this.emit('end')})
 })
 gulp.task('html', () => {
