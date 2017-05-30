@@ -52,6 +52,12 @@ app.use('/api/beer', ...sessionsMiddleware, beerRouter)
 app.use('/api/brewery', ...sessionsMiddleware, breweryRouter)
 mongoose.connect(`mongodb://${dbUsername}:${dbPassword}@${dbAddress}`).then(
 	() => {
+
+		User.create({
+			username: 'testUser',
+			password: config.backend.testUserPassword,
+			email: 'dummyMail@test.com'
+		})
 		throwLog('Init', 'Connected to database', true)
 		app.listen(port, () => {
 			throwLog('Init', 'App is running')
