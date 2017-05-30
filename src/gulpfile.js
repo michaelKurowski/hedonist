@@ -19,12 +19,14 @@ gulp.task('html', () => {
 gulp.task('sass', function () {
   return gulp.src('./sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('../prod/css'))
+    .pipe(gulp.dest('../public/css'))
         .on('error', function (err) {console.log(err);this.emit('end')})
 })
 
 gulp.task('watchCSS', () => gulp.watch('./publicDev/**/*.scss', ['sass']))
 
+gulp.task('watchJS', () => gulp.watch('./publicDev/index.html', ['babel']))
+
 gulp.task('watchHTML', () => gulp.watch('./publicDev/index.html', ['html']))
 
-gulp.task('default', () => gulp.start('watchHTML'));
+gulp.task('default', () => gulp.start(['watchHTML', 'watchJS', 'watchCSS']));
