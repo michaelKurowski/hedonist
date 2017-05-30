@@ -14,8 +14,8 @@ gulp.task('babel', () => {
         .on('error', function (err) {console.log(err);this.emit('end')})
 })
 gulp.task('html', () => {
-    return gulp.src('./publicDev/index.html').
-    pipe(gulp.dest('./public/'))
+    return gulp.src('./publicDev/index.html')
+    .pipe(gulp.dest('./public/'))
         .on('error', function (err) {console.log(err);this.emit('end')})
 })
 
