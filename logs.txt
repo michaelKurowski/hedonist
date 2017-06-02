@@ -1,1 +1,1 @@
-[Fri Jun 02 2017 01:26:19 GMT+0100 (GMT Daylight Time)] Init - App is runningatabase
+[Fri Jun 02 2017 21:53:59 GMT+0100 (GMT Daylight Time)] Init - App is runningatabase

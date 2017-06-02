@@ -5,30 +5,13 @@ const RANDOM_URL = '/beer/random/'
  const httpRequest = (url, method, data = null) => {
 
         if(method === 'GET'){
-            if(data === null){
             let foo = new Promise((res,err) => {
             $.get(url, result => res(result))
             })
             return foo;
-            }
-         else { 
-             let foo = new Promsise((res,err) => {
-
-                 $.ajax({
-                type: method,
-                url: url,
-                data: JSON.stringify(data),
-                success: (data => res(data)),
-                error: e => console.log('POST Error', e),
-                dataType: 'json',
-                contentType: 'application/json'
-            })
-         })
-         return foo;
-        }
         }
     
-    else if (method === 'POST'){
+        else if (method === 'POST'){
         let foo = new Promise((res,err) => {
             console.log('POST:', url, data)
             $.ajax({
