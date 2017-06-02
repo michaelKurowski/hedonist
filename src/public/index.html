@@ -1,85 +1,15 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./js/login.js"></script>
-    <script src="./js/queries.js"></script>
-</head>
-    <body>
-        <form action="/api/beer/" method="GET"> 
-                <div class="row">
-                    <div class="col-xs-6 col-md-4">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary" type="submit">
-                                <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        <div class="container-fluid">
-            <div id="beers" class="row"></div>
-        </div>
-    </body>
+  <head>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/48938155eb24b4ccdde09426066869504c6dab3c/dist/css/bootstrap.min.css">
+    <script src="https://use.fontawesome.com/7e74d1c4e1.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container"></div>
+  </body>
+  <script src="bundle.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 </html>
-<script>
-    const _DIVIDER = 6;
-
-
-    $(document).ready(() => {
-        loginToServer()
-    })
-
-    function generateBeers({data}) {
-        let JSONArray = data['0'];
-        console.log("Generate",JSONArray)
-        let infos = {name: JSONArray.name, url: JSONArray.labels.medium, info: JSONArray.description};
-        let i = 0;
-        let j = 0;
-        $('.container-fluid').append($('div').addClass('row').attr('id', `beer-row-${i}`))
-        BeerObject(document.getElementById(`beer-row-${i}`), i+j, infos)
-         BeerObject(document.getElementById(`beer-row-${i}`), i+j, infos)
-          BeerObject(document.getElementById(`beer-row-${i}`), i+j, infos)
-           BeerObject(document.getElementById(`beer-row-${i}`), i+j, infos)
-    }
-    function BeerObject(appendix, index, data){
-        let $element = $('<div/>', {id: 'beer-' + index, "class": "beer col-md-2"})
-        $element.append($('<h3/>', {text: data.name}))
-        $element.append($('<img/>',{src: data.url}))
-        $element.append($('<h5/>',{text: data.info}))
-        $(appendix).append($element)
-    }
-
-</script>
-<style>
-
-    .beer {
-
-        color: black ;
-        background-color: tan;
-        border-top: 1px solid #c0ffff ;
-        border-right: 1px solid #00f ;
-        border-bottom: 1px solid #00f ;
-        border-left: 1px solid #c0ffff ;
-        padding: 2px, 10px;
-        margin: 8px;
-
-    }
-    
-    h3,
-    h5 {
-        text-align: center;
-    } 
-    .beer img {
-        padding: 10px;
-        width: 100%;
-        display: inline-block;
-        vertical-align: middle;
-    }
-</style>

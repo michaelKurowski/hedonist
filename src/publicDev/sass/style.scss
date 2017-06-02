@@ -1,0 +1,33 @@
+
+.search-bar {
+  padding:0px;
+  margin-top:20px;
+  height: 40px;
+  text-align: center;
+}
+.search-bar select {
+  height: 95%;
+}
+
+.search-bar input {
+  width: 75%;
+}
+
+
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group-item:hover {
+  background-color: #eee;
+}
+
+.beer-title {
+  font-family: 'Ubuntu', sans-serif;
+  padding: 0px 20px;
+  text-align: center;
+}
+.beer-description {
+  font-family: 'Open Sans', sans-serif;
+  text-align: justify;
+}

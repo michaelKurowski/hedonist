@@ -1,0 +1,98 @@
+const URL_START = window.location.protocol + '//' + window.location.host + '/api'
+const ID_URL = '/beer/:term'
+const RANDOM_URL = '/beer/random/'
+
+ const httpRequest = (url, method, data = null) => {
+
+        if(method === 'GET'){
+            if(data === null){
+            let foo = new Promise((res,err) => {
+            $.get(url, result => res(result))
+            })
+            return foo;
+            }
+         else { 
+             let foo = new Promsise((res,err) => {
+
+                 $.ajax({
+                type: method,
+                url: url,
+                data: JSON.stringify(data),
+                success: (data => res(data)),
+                error: e => console.log('POST Error', e),
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+         })
+         return foo;
+        }
+        }
+    
+    else if (method === 'POST'){
+        let foo = new Promise((res,err) => {
+            console.log('POST:', url, data)
+            $.ajax({
+                type: method,
+                url: url,
+                data: JSON.stringify(data),
+                success: (data => res(data)),
+                error: e => console.log('POST Error', e),
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+        })
+        return foo;
+    }
+ }
+    const OptionsToAPI = (option) => {
+        console.log('OptionToAPI:', option)
+        switch(option){
+            case 'ID':
+                return ID_URL
+            case 'RANDOM':
+            return RANDOM_URL
+        }
+    }
+module.exports = {
+
+    QuerySearch: (params,callback) => {
+        console.log('Params:', params)
+        let URL = URL_START + OptionsToAPI(params.API).replace(':term', params.term);
+        console.log('Query URL', URL)
+       httpRequest(URL, 'GET').then(res => callback(res)) // callback(res))
+    },
+
+    ParseJSON: (json) => {
+        console.log('JSON', json)
+        
+   let result = {
+       data: {
+           name: json.name,
+           imgURL: verifyImages(),
+           desc: json.style.description || json.description
+       },
+       brewData: {
+           name: json.style.name,
+           desc: ''
+       }
+   }
+   function verifyImages(){
+       if (json.hasOwnProperty('labels.medium') && json['labels.medium'] ){
+           return json.labels.medium;
+       }
+       return 'https://i2.wp.com/steamworksbrewing.com/wp-content/uploads/2016/09/pale_ale.png'
+   }
+   console.log(result)
+    return result;
+    },
+
+    loginToServer: () => {
+
+    httpRequest('http://localhost:80/authenticate/signIn', 'POST', 
+    {
+        'username': 'testUser',
+        'password': 'bfb0dhedonistAdmin37b45dc1'
+    }).then(res => console.log('Login:', res))
+}
+}
+
