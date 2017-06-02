@@ -73,7 +73,7 @@ module.exports = {
        },
        brewData: {
            name: json.style.name,
-           desc: ''
+           desc: json.style.description || json.description
        }
    }
    function verifyImages(){

@@ -1,28 +1,17 @@
 import React, {Component} from 'react'
-import GoogleMap from './map.js'
+//import GoogleMap from './map.js'
 
-class BreweryDisplay extends Component{
-    constructor(props){
-        super(props);
-        
-        this.state = { 
-            data: {
-                name: '',
-                desc: '',
-                location: [0.0,0.0]
-            }
+const BreweryDisplay  = ({data}) => {
+        if(!data){
+            return <div>Loading...</div>;
         }
-    }
-
-    render(){
+        console.log('Brewery:', data)
         return(
-            <div className ='row'>
-                <h3> {this.state.data.name} </h3>
-                <p> {this.state.data.desc} </p>
-                <GoogleMap />
+            <div className ='brewery-display row'>
+                <h3> Brewed By: {data.name} </h3>
+                <p> {data.desc}  </p>
             </div>
         )
-    }
 }
 
 export default BreweryDisplay

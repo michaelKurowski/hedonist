@@ -18,13 +18,13 @@ class App extends Component {
       desc: 'Ale, along with bread, was an important source of nutrition in the medieval world, particularly small beer, also known as table beer or mild beer, which was highly nutritious, contained just enough alcohol to act as a preservative, and provided hydration without intoxicating effects. Small beer would have been consumed daily by almost everyone, including children, in the medieval world, with higher-alcohol ales served for recreational purposes. The lower cost for proprietors combined with the lower taxes levied on small beer led to the selling of beer labeled "strong beer" that had actually been diluted with small beer.[4] In medieval times, ale may have been safer to drink than most water (the germ theory of disease was unheard of, and the sterilizing properties of boiling unknown); however, there is no period evidence that people were aware of this nor that they chose to drink ale for this reason. The alcohol, hops, and some ingredients in gruit used to preserve some ales may have contributed to their lower load of pathogens, when compared to water. However, ale was largely safer due to the hours of boiling required in production, not the alcoholic content of the finished beverage.'
     },
     brewData: {
-      name: '',
-      desc: '',
+      name: 'Beer',
+      desc: 'Beer',
       location: [0.0,0.0]
     }
     }
     utils.loginToServer()
-   // this.videoSearch('surfboards');
+    this.beerSearch('', 'RANDOM');
   }
     beerSearch(term, API){
       utils.QuerySearch({term,API}, data => {
