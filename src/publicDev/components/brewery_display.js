@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-//import GoogleMap from './map.js'
 
 const BreweryDisplay  = ({data}) => {
         if(!data){
