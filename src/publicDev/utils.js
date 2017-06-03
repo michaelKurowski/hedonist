@@ -2,6 +2,12 @@ const URL_START = window.location.protocol + '//' + window.location.host + '/api
 const ID_URL = '/beer/:term'
 const RANDOM_URL = '/beer/random/'
 
+const stockImages = [
+    'https://i.imgur.com/z7bpu3P.png',
+    'https://i2.wp.com/steamworksbrewing.com/wp-content/uploads/2016/09/pale_ale.png'
+]
+
+
  const httpRequest = (url, method, data = null) => {
 
         if(method === 'GET'){
@@ -23,11 +29,13 @@ const RANDOM_URL = '/beer/random/'
                 dataType: 'json',
                 contentType: 'application/json'
             })
-        })
+            })
         return foo;
-    }
- }
-    const OptionsToAPI = (option, id) => {
+        }
+}
+
+
+const OptionsToAPI = (option, id) => {
         let URL = URL_START;
         console.log('OptionToAPI:', option)
         switch(option){
@@ -53,6 +61,12 @@ const RANDOM_URL = '/beer/random/'
             return URL += `/brewery/${id}/beer`
         }
     }
+
+const beerImage = () => {
+        let index = Math.floor(Math.random() * stockImages.length)
+        return stockImages[index];
+    }
+
 module.exports = {
 
     QuerySearch: (params,callback) => {
@@ -70,18 +84,18 @@ module.exports = {
          data: {
            name: json.name,
            imgURL: verifyImages(),
-           desc: json.style.description || json.description
+           desc: json.description || 'This beer has no description...'
             },
         brewData: {
            name: json.style.name,
-           desc: json.style.description || json.description
+           desc: json.style.description || 'This brewer has no description...'
             }
         }
         function verifyImages(){
        if (json.hasOwnProperty('labels.medium') && json['labels.medium'] ){
            return json.labels.medium;
        }
-       return 'https://i2.wp.com/steamworksbrewing.com/wp-content/uploads/2016/09/pale_ale.png'
+       return beerImage();
         }
         console.log(result)
         return result;

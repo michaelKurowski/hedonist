@@ -10,9 +10,8 @@
 }
 
 .search-bar input {
-  width: 75%;
+  width: 65%;
 }
-
 
 .list-group-item {
   cursor: pointer;
@@ -34,6 +33,9 @@
 .brewery-display{
   margin-top: 20px;
   padding: 5px;
+}
+body {
+  background-image: url('https://i.imgur.com/coo2kpJ.png')
 }
 body.stop-scrolling {
   height: 100%;

@@ -7,14 +7,10 @@ class SearchBar extends Component {
 
     this.state = { term: '', selectValue: 'RANDOM', show:false, signUp: false, signIn: false};
     this.handleChange = this.handleChange.bind(this);
-    this.updateState = this.updateState.bind(this);
   }
 
   handleChange(e){
     this.setState({selectValue:e.target.value})
-  }
-  updateState(newState){
-    this.setState(newState)
   }
   componentDidMount(){
     this.setState({show : true})
@@ -22,10 +18,10 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="search-bar row form-group">
-        <input value={this.state.term} className='form-control col-xs-4'
+      <div className="search-bar row form-group col-md-12">
+        <input value={this.state.term} className='form-control col-md-5'
           onChange={event => this.onInputChange(event.target.value, this.state.selectValue)} />
-          <select className='selectpicker col-xs-2' value={this.state.selectValue} onChange = {this.handleChange}>
+          <select className='selectpicker col-md-3' value={this.state.selectValue} onChange = {this.handleChange}>
           <option value='ID' data-tokens='id'> ID</option>
           <option value='NAME' data-tokens='id'> Name</option>
           <option value='RANDOM' data-tokens='Random'> Random</option>
@@ -38,8 +34,8 @@ class SearchBar extends Component {
           <option value='BREWERIES' data-tokens='id'> Brewery </option>
           <option value='OTHERS_SOLD' data-tokens='Hops'> Brewery's Beers</option>
         </select>
-        <button className='btn btn-primary'> <i className="fa fa-search" aria-hidden="true"></i> </button>
-        <SweetAlert
+        <button className='btn btn-primary col-md-1'> <i className="fa fa-search" aria-hidden="true"></i> </button>
+                <SweetAlert
         show={this.state.show}
         title="Sign In"
         text="Sign in to your account, or sign up."
@@ -47,8 +43,8 @@ class SearchBar extends Component {
         showCancelButton
         confirmButtonText ="Sign In"
         cancelButtonText = "Sign Up"
-        onConfirm={() => this.updateState({ show: false, signIn: true })}
-        onCancel = {() => this.updateState({ show: false, signUp: true })}
+        onConfirm={() => this.setState({ show: false, signIn: true })}
+        onCancel = {() => this.setState({ show: false, signUp: true })}
         />
         <SweetAlert
         show={this.state.signIn}
@@ -56,7 +52,7 @@ class SearchBar extends Component {
         text = "Please enter your login details."
         type = "input"
         input="email"
-        onConfirm={(e) => this.updateState({ signIn: false })}
+        onConfirm={(e) => this.setState({ signIn: false })}
         //Add Promise here to run Login option
         />
         <SweetAlert
