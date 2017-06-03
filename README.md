@@ -7,7 +7,7 @@ Hedonist allows users to search for various kinds of beers via huge BrewingDb da
 # Language
  - **Authentication Database** MongoDB
  - **Web Server** JavaScript
- - **Client** HTML, JavaScript, AngularJS, CSS
+ - **Client** HTML, JavaScript, SASS
 # Requirements
  - **Authentication Database**
 MongoDB 3.2.13 or later
