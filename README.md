@@ -14,9 +14,7 @@ MongoDB 3.2.13 or later
  - **Web Server**
 NodeJS 6.10.0 or later
  - **Server Framework**
-	- Express 4.15.2
-	- Mongoose 4.9.8
-  - Passport 0.3.2
+	- All required packages are being downloaded by npm
  - **Client Framework/Libraries** 
 
 # Deployment
