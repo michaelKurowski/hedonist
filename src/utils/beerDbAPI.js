@@ -25,7 +25,6 @@ module.exports = function (endpoint, parameters = null) {
 				response.on('data', data => buffer += data)
 				response.on('end', data => resolve(JSON.parse(buffer)))
 					.on('error', err => reject(err))
-				response.on('err', err => reject(err))
 			}
 		).end()
 	)
