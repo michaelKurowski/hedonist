@@ -27,20 +27,37 @@ const RANDOM_URL = '/beer/random/'
         return foo;
     }
  }
-    const OptionsToAPI = (option) => {
+    const OptionsToAPI = (option, id) => {
+        let URL = URL_START;
         console.log('OptionToAPI:', option)
         switch(option){
             case 'ID':
-                return ID_URL
+            return URL += `/beer/${id}`
+            case 'NAME':
+            return URL += `/beer/${id}`
             case 'RANDOM':
-            return RANDOM_URL
+            return URL += RANDOM_URL
+             case 'BOTD':
+            return URL += '/beer/beerOfTheDay'
+            case 'VARIATIONS':
+            return URL += `/beer/${id}/variations`
+            case 'SOCIAL' :
+            return URL += `/beer/${id}/socialAccounts`
+            case 'INGREDIENTS':
+            return URL += `/beer/${id}/ingredients`
+            case 'INGREDIENT_DETAILS':
+            return URL += `/beer/${id}/ingredients/details`
+            case 'BREWERIES':
+            return URL += `/brewery/${id}`
+            case 'OTHERS_SOLD':
+            return URL += `/brewery/${id}/beer`
         }
     }
 module.exports = {
 
     QuerySearch: (params,callback) => {
         console.log('Params:', params)
-        let URL = URL_START + OptionsToAPI(params.API).replace(':term', params.term);
+        let URL = OptionsToAPI(params.API, params.term);
         console.log('Query URL', URL)
        httpRequest(URL, 'GET').then(res => callback(res)) // callback(res))
     },
@@ -48,34 +65,44 @@ module.exports = {
     ParseJSON: (json) => {
         console.log('JSON', json)
         
-   let result = {
-       data: {
+        let result = {
+            id: json.id,
+         data: {
            name: json.name,
            imgURL: verifyImages(),
            desc: json.style.description || json.description
-       },
-       brewData: {
+            },
+        brewData: {
            name: json.style.name,
            desc: json.style.description || json.description
-       }
-   }
-   function verifyImages(){
+            }
+        }
+        function verifyImages(){
        if (json.hasOwnProperty('labels.medium') && json['labels.medium'] ){
            return json.labels.medium;
        }
        return 'https://i2.wp.com/steamworksbrewing.com/wp-content/uploads/2016/09/pale_ale.png'
-   }
-   console.log(result)
-    return result;
+        }
+        console.log(result)
+        return result;
     },
 
     loginToServer: () => {
 
-    httpRequest('http://localhost:80/authenticate/signIn', 'POST', 
-    {
+        httpRequest('http://localhost:80/authenticate/signIn', 'POST', 
+        {
         'username': 'testUser',
         'password': 'bfb0dhedonistAdmin37b45dc1'
-    }).then(res => console.log('Login:', res))
-}
+        }).then(res => console.log('Login:', res))
+    },
+    registerUser: (username, password, email) => {
+        httpRequest('http://localhost:80/authenticate/signUp', 'POST',
+            {
+                'username' : username,
+                'password' : password,
+                'email' : email
+            }
+        )
+    }
 }
 

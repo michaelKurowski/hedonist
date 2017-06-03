@@ -12,6 +12,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      id: '',
       data: {
       name: 'Typical Ale',
       imgURL: 'https://i2.wp.com/steamworksbrewing.com/wp-content/uploads/2016/09/pale_ale.png',
