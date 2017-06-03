@@ -7,10 +7,14 @@ class SearchBar extends Component {
 
     this.state = { term: '', selectValue: 'RANDOM', show:false, signUp: false, signIn: false};
     this.handleChange = this.handleChange.bind(this);
+    this.updateState = this.updateState.bind(this);
   }
 
   handleChange(e){
     this.setState({selectValue:e.target.value})
+  }
+  updateState(newState){
+    this.setState(newState)
   }
   componentDidMount(){
     this.setState({show : true})
@@ -43,8 +47,8 @@ class SearchBar extends Component {
         showCancelButton
         confirmButtonText ="Sign In"
         cancelButtonText = "Sign Up"
-        onConfirm={() => this.setState({ show: false, signIn: true })}
-        onCancel = {() => this.setState({ show: false, signUp: true })}
+        onConfirm={() => this.updateState({ show: false, signIn: true })}
+        onCancel = {() => this.updateState({ show: false, signUp: true })}
         />
         <SweetAlert
         show={this.state.signIn}
@@ -52,7 +56,8 @@ class SearchBar extends Component {
         text = "Please enter your login details."
         type = "input"
         input="email"
-        onConfirm={(e) => this.setState({ signIn: false })}
+        onConfirm={(e) => this.updateState({ signIn: false })}
+        //Add Promise here to run Login option
         />
         <SweetAlert
         show={this.state.signUp}
@@ -60,7 +65,8 @@ class SearchBar extends Component {
         text = "Please enter the required information."
         type = "input"
         input = "email"
-        onConfirm={(e) => this.setState({ signUp: false })}
+        onConfirm={(e) => this.updateState({ signUp: false })}
+        //Add Promise here to run Sign up option
         />
       </div>
     );
