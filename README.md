@@ -1,5 +1,6 @@
 # Hedonist
 <img src="https://github.com/michaelKurowski/hedonist/blob/master/hedonist.png" width="250">
+
 # About
 Hedonist allows users to search for various kinds of beers via huge BrewingDb database.
 # Language
