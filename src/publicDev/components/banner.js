@@ -8,7 +8,7 @@ const Banner = () => {
         <div id='home' className='banner'>
             <div className="container">
                 <div className="row">
-                    <div className="col-xs-12">>
+                    <div className="col-xs-12">
                         <h1>{topic}</h1>
                     </div>
                 </div>

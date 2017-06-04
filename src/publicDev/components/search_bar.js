@@ -19,9 +19,9 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="search-bar row form-group col-xs-12">
-        <input value={this.state.term} className='form-control col-xs-5'
+        <input value={this.state.term} className='form-control col-xs-5 col-xs-offset-1'
           onChange={event => this.onInputChange(event.target.value, this.state.selectValue)} />
-          <select className='selectpicker col-xs-3' value={this.state.selectValue} onChange = {this.handleChange}>
+          <select className='selectpicker col-xs-2' value={this.state.selectValue} onChange = {this.handleChange}>
           <option value='ID' data-tokens='id'> ID</option>
           <option value='NAME' data-tokens='id'> Name</option>
           <option value='RANDOM' data-tokens='Random'> Random</option>
