@@ -18,10 +18,10 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="search-bar row form-group col-md-12">
-        <input value={this.state.term} className='form-control col-md-5'
+      <div className="search-bar row form-group col-xs-12">
+        <input value={this.state.term} className='form-control col-xs-5'
           onChange={event => this.onInputChange(event.target.value, this.state.selectValue)} />
-          <select className='selectpicker col-md-3' value={this.state.selectValue} onChange = {this.handleChange}>
+          <select className='selectpicker col-xs-3' value={this.state.selectValue} onChange = {this.handleChange}>
           <option value='ID' data-tokens='id'> ID</option>
           <option value='NAME' data-tokens='id'> Name</option>
           <option value='RANDOM' data-tokens='Random'> Random</option>
@@ -34,7 +34,7 @@ class SearchBar extends Component {
           <option value='BREWERIES' data-tokens='id'> Brewery </option>
           <option value='OTHERS_SOLD' data-tokens='Hops'> Brewery's Beers</option>
         </select>
-        <button className='btn btn-primary col-md-1'> <i className="fa fa-search" aria-hidden="true"></i> </button>
+        <button className='btn btn-primary col-xs-1'> <i className="fa fa-search" aria-hidden="true"></i> </button>
                 <SweetAlert
         show={this.state.show}
         title="Sign In"

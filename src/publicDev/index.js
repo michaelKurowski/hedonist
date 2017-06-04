@@ -1,6 +1,7 @@
 import _  from 'lodash'
 import React, {Component} from 'react'
 import ReactDOM  from 'react-dom'
+import Banner from './components/banner'
 import SearchBar  from './components/search_bar'
 import BeerDisplay  from './components/beer_display'
 import BreweryDisplay  from './components/brewery_display'
@@ -39,6 +40,7 @@ class App extends Component {
 
     return (
       <div>
+        <Banner/>
         <SearchBar onSearchTermChange={beerSearch}/>
         <BeerDisplay data= {this.state.data}/>
         <BreweryDisplay data= {this.state.brewData}/>
