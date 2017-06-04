@@ -35,14 +35,15 @@ const stockImages = [
 }
 
 
-const OptionsToAPI = (option, id) => {
+const OptionsToAPI = (option, term) => {
         let URL = URL_START;
+        let id = encodeURIComponent(term);
         console.log('OptionToAPI:', option)
         switch(option){
             case 'ID':
             return URL += `/beer/${id}`
             case 'NAME':
-            return URL += `/beer/${id}`
+            return URL += `/beer/?name=${id}`
             case 'RANDOM':
             return URL += RANDOM_URL
              case 'BOTD':
@@ -76,14 +77,14 @@ module.exports = {
        httpRequest(URL, 'GET').then(res => callback(res)) // callback(res))
     },
 
-    ParseJSON: (json) => {
-        console.log('JSON', json)
-        
+    ParseJSON: (input) => {
+        console.log('JSON', input)
+        let json = (input.hasOwnProperty('0')) ? input['0'] : input;
         let result = {
             id: json.id,
          data: {
            name: json.name,
-           imgURL: verifyImages(),
+           imgURL: json.labels.medium || verifyImages(),
            desc: json.description || 'This beer has no description...'
             },
         brewData: {
