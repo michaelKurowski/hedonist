@@ -51,7 +51,8 @@ class SearchBar extends Component {
         title="Sign In"
         text = "Please enter your login details."
         type = "input"
-        input="email"
+        inputType="email"
+        placeholder="Username"
         onConfirm={(e) => this.setState({ signIn: false })}
         //Add Promise here to run Login option
         />
@@ -60,8 +61,11 @@ class SearchBar extends Component {
         title="Sign Up"
         text = "Please enter the required information."
         type = "input"
-        input = "email"
-        onConfirm={(e) => this.updateState({ signUp: false })}
+        inputType="email"
+        placeholder="Username"
+        required
+        validationMsg="This information is required."
+        onConfirm={(e) => this.setState({ signUp: false })}
         //Add Promise here to run Sign up option
         />
       </div>
