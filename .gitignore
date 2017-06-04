@@ -4,4 +4,4 @@ src/config/config.json
 src/npm-debug.log
 npm-debug.log
 src/logs.txt
-src/public/
+src/public

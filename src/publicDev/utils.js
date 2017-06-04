@@ -77,27 +77,42 @@ module.exports = {
        httpRequest(URL, 'GET').then(res => callback(res)) // callback(res))
     },
 
-    ParseJSON: (input) => {
+    ParseJSON: (input, index = 0) => {
+
         console.log('JSON', input)
-        let json = (input.hasOwnProperty('0')) ? input['0'] : input;
+        let counter = 0;
+        for (let key in input)
+        {
+            if (input.hasOwnProperty(key))
+            {
+                counter++;
+            }
+        }
+        //if(index >= counter) throw error('Index higher than JSON Amount');
+
+        function verifyImages(){
+            if(json.hasOwnProperty('labels')){
+                return json.labels.medium;
+            }
+            return beerImage()
+        }
+
+        let json = (input.hasOwnProperty(index)) ? input[index] : input;
         let result = {
             id: json.id,
+            results: counter,
          data: {
            name: json.name,
-           imgURL: json.labels.medium || verifyImages(),
+           imgURL: verifyImages(),
            desc: json.description || 'This beer has no description...'
             },
         brewData: {
            name: json.style.name,
            desc: json.style.description || 'This brewer has no description...'
-            }
+            },
+            json: input
         }
-        function verifyImages(){
-       if (json.hasOwnProperty('labels.medium') && json['labels.medium'] ){
-           return json.labels.medium;
-       }
-       return beerImage();
-        }
+
         console.log(result)
         return result;
     },

@@ -22,17 +22,17 @@ class SearchBar extends Component {
         <input value={this.state.term} className='form-control col-xs-5 col-xs-offset-1'
           onChange={event => this.onInputChange(event.target.value, this.state.selectValue)} />
           <select className='selectpicker col-xs-2' value={this.state.selectValue} onChange = {this.handleChange}>
-          <option value='ID' data-tokens='id'> ID</option>
-          <option value='NAME' data-tokens='id'> Name</option>
-          <option value='RANDOM' data-tokens='Random'> Random</option>
-          <option value='BOTD' data-tokens='Random'> Beer of the Day</option>
+          <option value='ID'> ID</option>
+          <option value='NAME'> Name</option>
+          <option value='RANDOM'> Random</option>
+          <option value='BOTD'> Beer of the Day</option>
           <option value='VARIATION' data-tokens='Variations'> Variations</option>
-          <option value='HOPS' data-tokens='Hops'> Hops</option>
-          <option value='SOCIAL' data-tokens='id'> Social Accounts </option>
-          <option value='INGREDIENTS' data-tokens='id'> Ingredients </option>
-          <option value='INGREDIENT_DETAILS' data-tokens='id'> Ingredient Details</option>
-          <option value='BREWERIES' data-tokens='id'> Brewery </option>
-          <option value='OTHERS_SOLD' data-tokens='Hops'> Brewery's Beers</option>
+          <option value='HOPS'> Hops</option>
+          <option value='SOCIAL'> Social Accounts </option>
+          <option value='INGREDIENTS'> Ingredients </option>
+          <option value='INGREDIENT_DETAILS'> Ingredient Details</option>
+          <option value='BREWERIES'> Brewery </option>
+          <option value='OTHERS_SOLD'> Brewery's Beers</option>
         </select>
         <button className='btn btn-primary col-xs-1'> <i className="fa fa-search" aria-hidden="true"></i> </button>
                 <SweetAlert

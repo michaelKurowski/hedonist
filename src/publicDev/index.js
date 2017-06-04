@@ -14,6 +14,8 @@ class App extends Component {
 
     this.state = {
       id: '',
+      currentResult: 0,
+      results: 0,
       data: {
       name: 'Typical Ale',
       imgURL: 'https://i2.wp.com/steamworksbrewing.com/wp-content/uploads/2016/09/pale_ale.png',
@@ -22,7 +24,8 @@ class App extends Component {
     brewData: {
       name: 'Beer',
       desc: 'Beer'
-    }
+    },
+    json: null
     }
     utils.loginToServer()
     this.beerSearch('', 'RANDOM');
@@ -43,6 +46,7 @@ class App extends Component {
         <SearchBar onSearchTermChange={beerSearch}/>
         <BeerDisplay data= {this.state.data}/>
         <BreweryDisplay data= {this.state.brewData}/>
+        <button onClick={() => this.setState(utils.ParseJSON(this.state.json, ++this.state.currentResult))}> See Next Beer... If there is one </button>
       </div>
     );
   }

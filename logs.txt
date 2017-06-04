@@ -1,1 +1,1 @@
-[Sat Jun 03 2017 12:04:10 GMT+0100 (GMT Daylight Time)] Init - App is runningatabase
+[Sun Jun 04 2017 11:28:22 GMT+0100 (GMT Daylight Time)] /api/beer/?name=this%20one - TypeError: Request path contains unescaped characters
