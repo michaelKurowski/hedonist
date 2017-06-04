@@ -21,8 +21,7 @@ class App extends Component {
     },
     brewData: {
       name: 'Beer',
-      desc: 'Beer',
-      location: [0.0,0.0]
+      desc: 'Beer'
     }
     }
     utils.loginToServer()

@@ -5,7 +5,7 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: '', selectValue: 'RANDOM', show:false, signUp: false, signIn: false};
+    this.state = { term: '', selectValue: 'NAME', show:false, signUp: false, signIn: false};
     this.handleChange = this.handleChange.bind(this);
   }
 
