@@ -1,1 +1,0 @@
-[Sun Jun 04 2017 11:28:22 GMT+0100 (GMT Daylight Time)] /api/beer/?name=this%20one - TypeError: Request path contains unescaped characters

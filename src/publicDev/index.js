@@ -36,6 +36,9 @@ class App extends Component {
         this.setState(utils.ParseJSON(data.data))
       })
   }
+  renderNumbers(JSON) {
+
+  }
 
   render() {
   const beerSearch = _.debounce((term, API) => { this.beerSearch(term, API) }, 500);
@@ -46,7 +49,6 @@ class App extends Component {
         <SearchBar onSearchTermChange={beerSearch}/>
         <BeerDisplay data= {this.state.data}/>
         <BreweryDisplay data= {this.state.brewData}/>
-        <button onClick={() => this.setState(utils.ParseJSON(this.state.json, ++this.state.currentResult))}> See Next Beer... If there is one </button>
       </div>
     );
   }

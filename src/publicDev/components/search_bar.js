@@ -5,12 +5,13 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: '', selectValue: 'NAME', show:false, signUp: false, signIn: false};
+    this.state = { term: '', selectValue: 'NAME'};
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e){
     this.setState({selectValue:e.target.value})
+    this.props.onSearchTermChange(this.state.term, this.state.selectValue);
   }
   componentDidMount(){
     this.setState({show : true})
@@ -34,44 +35,13 @@ class SearchBar extends Component {
           <option value='BREWERIES'> Brewery </option>
           <option value='OTHERS_SOLD'> Brewery's Beers</option>
         </select>
-        <button className='btn btn-primary col-xs-1'> <i className="fa fa-search" aria-hidden="true"></i> </button>
-                <SweetAlert
-        show={this.state.show}
-        title="Sign In"
-        text="Sign in to your account, or sign up."
-        type="info"
-        showCancelButton
-        confirmButtonText ="Sign In"
-        cancelButtonText = "Sign Up"
-        onConfirm={() => this.setState({ show: false, signIn: true })}
-        onCancel = {() => this.setState({ show: false, signUp: true })}
-        />
-        <SweetAlert
-        show={this.state.signIn}
-        title="Sign In"
-        text = "Please enter your login details."
-        type = "input"
-        inputType="email"
-        placeholder="Username"
-        onConfirm={(e) => this.setState({ signIn: false })}
-        //Add Promise here to run Login option
-        />
-        <SweetAlert
-        show={this.state.signUp}
-        title="Sign Up"
-        text = "Please enter the required information."
-        type = "input"
-        inputType="email"
-        placeholder="Username"
-        required
-        validationMsg="This information is required."
-        onConfirm={(e) => this.setState({ signUp: false })}
-        //Add Promise here to run Sign up option
-        />
+        <button className='btn btn-primary col-xs-1' onClick={ e => this.handleClick(e)}> <i className="fa fa-search" aria-hidden="true"></i> </button>
       </div>
-    );
+    )
   }
-
+  handleClick(e){
+    this.props.onSearchTermChange(this.state.term, this.state.selectValue);
+  }
   onInputChange(term, api) {
     this.setState({term: term, selectValue: api});
     this.props.onSearchTermChange(term, api);

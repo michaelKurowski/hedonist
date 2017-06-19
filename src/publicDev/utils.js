@@ -80,16 +80,6 @@ module.exports = {
     ParseJSON: (input, index = 0) => {
 
         console.log('JSON', input)
-        let counter = 0;
-        for (let key in input)
-        {
-            if (input.hasOwnProperty(key))
-            {
-                counter++;
-            }
-        }
-        //if(index >= counter) throw error('Index higher than JSON Amount');
-
         function verifyImages(){
             if(json.hasOwnProperty('labels')){
                 return json.labels.medium;
@@ -100,7 +90,6 @@ module.exports = {
         let json = (input.hasOwnProperty(index)) ? input[index] : input;
         let result = {
             id: json.id,
-            results: counter,
          data: {
            name: json.name,
            imgURL: verifyImages(),

@@ -7,7 +7,7 @@ const BreweryDisplay  = ({data}) => {
         console.log('Brewery:', data)
         return(
             <div className ='brewery-display row'>
-                <h3> Brewed By: {data.name} </h3>
+                <h3 className='text-center'> Brewed By: {data.name} </h3>
                 <p> {data.desc}  </p>
             </div>
         )
