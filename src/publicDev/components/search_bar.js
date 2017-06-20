@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SweetAlert from 'sweetalert-react';
 
 class SearchBar extends Component {
   constructor(props) {
